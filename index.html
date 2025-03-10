@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione della Memoria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Rappresentazione della Memoria</h1>
+    <div class="memory-container" id="memory">
+        <div class="segment stack-segment" id="stack">Stack</div>
+        <div class="segment heap-segment">Heap</div>
+        <div class="segment data-segment">Data Segment</div>
+        <div class="segment text-segment">Text Segment</div>
+    </div>
+    <div class="legend">
+        <h3>Legenda</h3>
+        <p><span style="color:#F44336">■</span> Stack - Chiamate di funzione e variabili locali</p>
+        <p><span style="color:#FFC107">■</span> Heap - Allocazione dinamica</p>
+        <p><span style="color:#2196F3">■</span> Data Segment - Variabili globali e statiche</p>
+        <p><span style="color:#4CAF50">■</span> Text Segment - Codice eseguibile</p>
+    </div>
+    <button onclick="allocateMemory()">Allocare Memoria</button>
+    <button onclick="deallocateMemory()">Deallocare Memoria</button>
+    <script>
+        function allocateMemory() {
+        let heap = document.querySelector('.heap-segment');
+        let newBlock = document.createElement('div');
+        newBlock.className = 'segment heap-segment';
+        newBlock.innerText = 'Heap Block';
+        heap.insertAdjacentElement('beforebegin', newBlock);
+    }
+
+    function deallocateMemory() {
+        let heapBlocks = document.querySelectorAll('.heap-segment');
+        if (heapBlocks.length > 1) {
+            heapBlocks[0].remove();
+        }
+    }
+    </script>
+</body>
+</html>
 
